@@ -15,7 +15,7 @@ Run by calling
 1. Currently the BE does not localize validation errors based on the user language in React apps. Instead they're always sent in English. So:
     - Either a language header needs to be sent and the errors localized in BE 
     - OR the BE needs to send a translation key instead of the full error message in the error.
-2. Currently the BE sends validation keys with uppercase first letters (e.g. WasteHolderCompany), whereas api generators by default create API models with small first letters (i.e. wasteHolderCompany) to match Typescript standards. Either
+2. Currently the BE sends validation keys in PascalCase (e.g. WasteHolderCompany.BusinessId) as per .NET standards, whereas api generators by default create API models with camelCase (i.e. wasteHolderCompany.businessId) to match Typescript standards. Either
     - Validation models have to be generated separately in the FE with the option to Capitalize the first letters
     - OR use the same model and use the option to Capitalize the first letters and frontend has to start using PascalCase when using the API models
     - OR figure out how to get FluentValidation to use camelCase when outputting its error keys.
