@@ -24,6 +24,10 @@ console.log(getBackendErrorMessage(resultTyped, 'WasteHolderCompany.BusinessId')
 console.log(getBackendErrorMessage(resultTyped, 'Destination.Location.Latitude')) // ["This value is not within Finland's borders."],
 console.log(getBackendErrorMessage(resultTyped, 'Wastes[0].RecoveryCode')) // ["Waste has to end up in a laboratory analysis (ShippedToLaboratoryForAnalysis), or have a recovery code or a disposal code. It can not have more than one of these three."]
 
+for (var i = 0; i < 10; i++) {
+    console.log(getBackendErrorMessage(resultTyped, `Wastes[${i}].RecoveryCode`)) // undefined after the first one
+}
+
 // Keys that exist in NestedKeys of type T return undefined when there is no validation error
 console.log(getBackendErrorMessage(resultTyped, 'WasteHolderContact.Email')) // undefined
 
