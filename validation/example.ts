@@ -16,7 +16,7 @@ import { FluentValidationError } from "./models/validationResult"
 import getBackendErrorMessage from "./utils/getBackEndErrorMessage"
 
 const resultRaw = JSON.parse(failureMessage)
-const resultTyped = resultRaw as FluentValidationError<CreateOrUpdateShippingDocument>
+const resultTyped = resultRaw.errors as FluentValidationError<CreateOrUpdateShippingDocument>
 
 // Keys that exist in NestedKeys of type T return the error when it exists
 console.log(getBackendErrorMessage(resultTyped, 'WasteHolderHouseHold')) // ["Household must be null/empty when Wasteholder company is sent."]
@@ -27,8 +27,8 @@ console.log(getBackendErrorMessage(resultTyped, 'Wastes[0].RecoveryCode')) // ["
 // Keys that exist in NestedKeys of type T return undefined when there is no validation error
 console.log(getBackendErrorMessage(resultTyped, 'WasteHolderContact.Email')) // undefined
 
-// Keys that do not exist in NestedKeys of type T are not allowed and will throw a compile time error
-console.log(getBackendErrorMessage(resultTyped, 'WasteHolderContact.KeyDoesntExist'))
+// Keys that do not exist in NestedKeys of type T are not allowed and will complain in the editor and will fail at compile time. Uncomment to test
+//console.log(getBackendErrorMessage(resultTyped, 'WasteHolderContact.KeyDoesntExist'))
 
-// VS Code will recommend and autocomplete keys that exist in NestedKeys of type T
-console.log(getBackendErrorMessage(resultTyped, ''))
+// VS Code will recommend and autocomplete keys that exist in NestedKeys of type T. Uncomment and go to the empty string to test
+//console.log(getBackendErrorMessage(resultTyped, ''))

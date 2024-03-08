@@ -1,5 +1,7 @@
 
-export const failureMessage = `{
+export const failureMessage = `
+{
+  "errors": {
     "WasteHolderHouseHold": [
       "Household must be null/empty when Wasteholder company is sent."
     ],
@@ -122,4 +124,5 @@ export const failureMessage = `{
     "Wastes[0].ShippedToLaboratoryForAnalysis": [
       "Waste has to end up in a laboratory analysis (ShippedToLaboratoryForAnalysis), or have a recovery code or a disposal code. It can not have more than one of these three."
     ]
-  }`
+  }
+}`
